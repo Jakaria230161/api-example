@@ -19,9 +19,32 @@ const displayCountries = countries => {
         countryDiv.classList.add("country");
         countryDiv.innerHTML = `
             <h3>Name: ${country.name.common} </h3>
-            <p>Capital : ${country.capital? country.capital[0] : "No capital" }</p>
+            <p>Capital : ${country.capital ? country.capital[0] : "No capital" }</p>
+            <button onclick="loadCountryCapital('${country.cca2}')">Display details: </button>
+            
         `;
         countriesContainer.appendChild(countryDiv);
     })
 }
+
+const loadCountryCapital = (code) => {
+    // https://restcountries.com/v3.1/alpha/{code}
+
+    const url = `https://restcountries.com/v3.1/alpha/${code}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayCountryDetail(data[0]))
+
+    // console.log("get country details", code);
+    // console.log(url);
+}
+
+const displayCountryDetail = country => {
+    const countryDetail = document.getElementById("country-detail");
+    countryDetail.innerHTML = `
+        <h2>Details : ${country.name.common}</h2>
+        <img src = "${country.flags.png}">
+    `
+}
+
 loadCountries();
