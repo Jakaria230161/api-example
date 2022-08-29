@@ -13,12 +13,18 @@
 <body>
     
     <header>
-        <h1>Eat Food what do you want!</h1>
+        <h1 class="text-center text-primary">Eat Food what do you want!</h1>
     </header>
 
     <main>
-        <section>
-            <h2>Choose Your Meal!!</h2>
+
+        <section class="container rounded mb-2">
+            <input class="rounded-3 px-3 py-2" id="search-field" type="text" placeholder="Search your food...">
+            <button onclick="searchFood();" class="btn btn-warning">Search</button>
+        </section>
+
+        <section class="container mb-4 mt-2">
+            <h2 class="text-danger">Choose Your Meal!!</h2>
         <div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4">
 
         </div>
